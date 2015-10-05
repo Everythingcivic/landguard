@@ -1,0 +1,19 @@
+<script>
+$(document).ready(function(){
+	$('#landmaster_district_id').change(function(){
+		var D_id = $('#landmaster_district_id :selected').val();
+		if(D_id != 0)
+		{
+			$.ajax({
+				type:'post',
+				url:'getvalue.php',
+				data:{id:landmaster_district_id},
+				cache:false,
+				success: function(returndata){
+					$('#landmaster_taluka_id').html(returndata);
+				}
+			});
+		}
+	})
+})
+</script>

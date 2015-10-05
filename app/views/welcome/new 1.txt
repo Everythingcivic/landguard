@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landguard</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta charset="UTF-8">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="page-header-fixed">
+	<div>
+		<% if user_signed_in? %>
+    Welcome <%=  current_user.name %>
+	<header>
+    <%= render 'layouts/header' %>
+  </header>
+	<%= yield %>
+	<%= render 'layouts/footer' %>
+		<% else %>
+    <%= link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up", new_user_registration_path %>
+		<%= yield %>
+		<% end %>
+	</div>
+	
+	<%#1 content_for :footer do %>
+    <!-- <p> Posted by: Spaceo Technologies </p> -->
+  <%# end %> 
+	
+
+
+</body>
+
+</html>
+
+
+---------------------
+
+welcome -> index.html.erb
+
+
+	
+<h1 style = "color: #ED2585;text-align: center" >Welcome To LandGuard!</h1>
+
+<table align="center">
+	<tr>
+		<td>
+			<img src="/landguard/assets/landlogo.jpg" alt="Landguard" height="300" width="500" >
+		</td>
+		<td>
+			<img src="/landguard/assets/Landguard-img1.jpg" alt="Landguard" height="300" width="500" >	
+		</td>
+		<td>
+			<img src="/landguard/assets/landguard-img2.jpg" alt="Landguard" height="300" width="500" >	
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" align="center" >
+			<h3 style="color:#ED2585"> This Project is about government land information.By using this application we can get the information about lands of government which is available for use
+			 or not and that land is belongs to government project or not.So this is helpful for keeping digital record of government's land. </h3>
+		</td>
+	</tr>
+<!-- <p>Find me in app/views/welcome/index.html.erb</p> -->

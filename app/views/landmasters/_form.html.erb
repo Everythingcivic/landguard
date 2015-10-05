@@ -1,0 +1,163 @@
+<div class="page-title">
+	<h3>Add Land Details</h3>
+	<div class="page-breadcrumb">
+		<ol class="breadcrumb">
+			<li><a href="<%= root_path %>">Home</a></li>
+			<li class="active">AddLandDetails</li>
+		</ol>
+	
+	</div>
+</div>
+<div class="col-md-12">
+  <div class="panel panel-white">
+		<div class="panel-heading clearfix">
+			<h4 class="panel-title">Landmaster Form</h4>
+		</div>
+		<div class="panel-body">
+			<%= form_for(@landmaster,:html => {:class => "form-horizontal"}) do |f|%>
+				<% if @landmaster.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(@landmaster.errors.count, "error") %> prohibited this landmaster from being saved:</h2>
+						<ul>
+						<% @landmaster.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<div class="form-group">
+					<%= f.label :land_type , t("land_type") ,:class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+								<%= f.select :land_type, Landmaster::Land_Type,{:prompt  => "Please Select"}, :class=>"form-control m-b-sm" %>
+						</div>
+				</div>
+				<div class="form-group">
+				<%= f.label :district_id, t("district_id"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.collection_select :district_id , @districts, :id , :name ,{ :prompt => "Please Select"}, {:class=>"form-control m-b-sm"} %> 
+						</div>
+				</div>
+				<%= f.hidden_field :district_name %>
+				<% if params[:action] == "edit" %>
+				<div class="form-group">
+					<%= f.label :taluka_id  , t("taluka_id"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.collection_select :taluka_id, @talukas , :id , :name , {:prompt => "Please Select"}, :class=>"form-control m-b-sm" %> 
+						</div>
+				</div>
+				<% else %>
+				<div class="form-group">
+					<%= f.label :taluka_id  , t("taluka_id"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.collection_select :taluka_id ,[], :id , :name , {:prompt => "Please Select"}, :class=>"form-control m-b-sm" %> 
+						</div>
+				</div>
+				<% end %>
+				<%= f.hidden_field :taluka_name %>
+				<div class="form-group">
+					<%= f.label :village, t("village"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%=f.text_field :village,:class=>"form-control" ,:placeholder=>"Village" %> 
+						</div>
+				</div>		
+				<div class="form-group">
+					<%= f.label :survey_number, t("survey_number"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_field :survey_number,:class=>"form-control" ,:placeholder=>"Survey Number" %> 
+						</div>
+				</div>			 
+				<div class="form-group">
+					<%= f.label :survey_area, t("survey_area"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_field :survey_area,:class=>"form-control" ,:placeholder=>"Survey Area" %> 
+						</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :TP_number, t("TP_number"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_field :TP_number,:class=>"form-control" ,:placeholder=>"TP_number" %> 
+						</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :FP_number , t("FP_number"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_field :FP_number ,:class=>"form-control" ,:placeholder=>"FP_number" %> 
+						</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :FP_area  , t("FP_area"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_field :FP_area,:class=>"form-control" ,:placeholder=>"FP Area" %> 
+						</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :FP_shape, t("FP_shape"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_field :FP_shape,:class=>"form-control" ,:placeholder=>"FP Shape" %> 
+						</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :details  , t("details"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_area :details,:class=>"form-control" ,:placeholder=>"Details" %> 
+						</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :remark, t("remark"), :class=>"col-sm-2 control-label"%>
+						<div class="col-sm-8">
+							<%= f.text_area :remark,:class=>"form-control" ,:placeholder=>"Remark" %> 
+						</div>
+				</div>
+				<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-8">
+					<div class="checkbox">
+						<%= f.label :is_land_allocated, t("is_land_allocated")%>
+						<%= f.check_box :is_land_allocated %> 
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<%= f.submit :class=>"btn btn-success" %>
+						<%= button_tag "Cancel",:type => 'button',:class => "btn btn-success", :onclick => "location.href = '#{landmasters_path()}'" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>
+
+  <script>
+
+  $(document).ready(function(){
+		$('#landmaster_taluka_id').change(function(){
+        var taluka = $('#landmaster_taluka_id :selected').text(); 
+        $("#landmaster_taluka_name").val(taluka);
+        });
+		$('#landmaster_district_id').change(function(){
+			var district = $('#landmaster_district_id :selected').text(); 
+			$("#landmaster_district_name").val(district);
+			var D_id = $('#landmaster_district_id :selected').val();
+			var prompt = $(this).has('option[value= ""]').size() ? $(this).find('option[value= ""]') : $('<option value=\"\">').text('Select Taluka');
+			var url = '<%= get_taluka_landmasters_path %>' ;
+			var observer = $('select#landmaster_taluka_id');
+      observer.empty().append(prompt);
+				if(D_id != 0)
+					{
+					$.ajax({
+								type:'GET',
+								url: url,
+								data: {id: D_id },
+								dataType: "json",
+								success: function(data){
+								  $.each( data, function( key, value ) {
+									    observer.append($('<option>').attr("value",value['_id']['$oid']).text(value['name']));
+		                   });
+				            }
+			          });
+		      }
+	  })
+  })
+		   
+  </script>
+  

@@ -1,0 +1,14 @@
+<p class="text-center m-t-md">Please login into your account.</p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name) , :html => {:class => "m-t-md"}) do |f| %>
+	
+		<div class="form-group">
+		  <%= f.email_field :email, autofocus: true , :class=>"form-control" ,:placeholder=>"Email" ,:required=> true %>
+		</div>
+		<div class="form-group">
+		  <%= f.password_field :password, autocomplete: "off" ,:class=>"form-control" ,:placeholder=>"Password" ,:required => true %>
+		</div>
+		<%= f.submit "Login" ,:class=>"btn btn-success btn-block"%>
+		<a href="<%= new_password_path(resource_name) %>" class="display-block text-center m-t-md text-sm">Forgot Password?</a>
+		<p class="text-center m-t-xs text-sm">Do not have an account?</p>
+		<a href="<%= new_registration_path(resource_name) %>" class="btn btn-default btn-block m-t-md">Create an account</a>
+	<% end  %>

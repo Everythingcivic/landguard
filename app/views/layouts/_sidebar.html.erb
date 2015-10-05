@@ -1,0 +1,20 @@
+<div class="page-sidebar sidebar">
+		  <div class="page-sidebar-inner slimscroll">
+			  <ul class="menu accordion-menu">
+          <li class="active"><a href="<%= root_path %>" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
+					
+					<li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Landmasters</p><span class="arrow"></span></a>
+							<ul class="sub-menu">
+									<li><a href="<%=url_for :controller => "landmasters" ,:action => "index" %>">Landmasters</a></li>
+									<li><a href="<%=new_landmaster_path %>">Add Landmaster</a></li>
+							</ul>
+					</li>
+					<li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Districts</p><span class="arrow"></span></a>
+							<ul class="sub-menu">
+									<li><a href="<%= url_for :controller => "districts" ,:action => "index" %>">Districts</a></li>
+									<li><a href="<%= new_district_path %>">Add District</a></li>
+							</ul>
+					</li>
+        </ul>
+      </div><!-- Page Sidebar Inner -->
+    </div><!-- Page Sidebar -->

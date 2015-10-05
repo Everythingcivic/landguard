@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+<table cellspacing="20"  border="1" style="border : 2px solid #DEBDA8">
+<th colspan="4" >
+Details of Landmaster record
+</th>
+
+<tr>
+<td>
+  <strong>Land Type : </strong>
+  <%= @landmaster.land_type %>
+</td>
+
+<td>
+  <strong>District Name : </strong>
+  <%= @landmaster.district_name %>
+</td>
+
+<td>
+  <strong>Taluka Name : </strong>
+  <%= @landmaster.taluka_name %>
+</td>
+
+<td>
+  <strong>Village : </strong>
+  <%= @landmaster.village %>
+</td>
+</tr>
+<tr>
+<td>
+  <strong>Survey Number : </strong>
+  <%= @landmaster.survey_number %>
+</td>
+
+<td>
+  <strong>Survey Area : </strong>
+  <%= @landmaster.survey_area %>
+</td>
+
+<td>
+  <strong>FP Number : </strong>
+  <%= @landmaster.FP_number %>
+</td>
+</tr>
+<tr>
+<td>
+  <strong>TP Number : </strong>
+  <%= @landmaster.TP_number %>
+</td>
+
+<td>
+  <strong>FP Area : </strong>
+  <%= @landmaster.FP_area %>
+</td>
+
+<td>
+  <strong>FP Shape : </strong>
+  <%= @landmaster.FP_shape %>
+</td>
+</tr>
+<tr>
+<td>
+  <strong>Details : </strong>
+  <%= @landmaster.details %>
+</td>
+
+<td>
+  <strong>Remarks : </strong>
+  <%= @landmaster.remark %>
+</td>
+</tr>
+</table>
+<%= link_to 'Edit', edit_landmaster_path(@landmaster) %> |
+<%= link_to 'Back', landmasters_path %>
